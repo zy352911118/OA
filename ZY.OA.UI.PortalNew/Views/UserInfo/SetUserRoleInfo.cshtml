@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+@using ZY.OA.Model
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <title>为用户分配角色</title>
+    <style type="text/css">
+         label,input {
+          font-weight:500;
+          cursor:pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        //分配角色的表单提交方法
+        function setUserRoleSubmit() {
+            $('#setUserRoleInfo').submit();
+        }
+        //分配角色成功之后
+        function afterSet(data) {
+            window.parent.window.afterRoleSet(data);//调用父窗体的分配角色成功之后
+        }
+    </script>
+</head>
+<body>
+    @{ 
+        UserInfo userInfo = ViewBag.userInfo;  
+             
+    }
+    <label style="font-size:18px; font-weight:bolder">为<span style="color:red">@userInfo.UName</span>分配角色</label>
+    <div class="row">
+        @using (Ajax.BeginForm("SetUserRoleInfoOver", "UserInfo", new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterSet" }, new { id = "setUserRoleInfo" }))
+        {
+            <input type="hidden" name="userId" value="@userInfo.ID" />
+            List<int> userRoleId = ViewBag.userRoleId;
+            List<RoleInfo> RoleInfos = ViewBag.RoleInfos;
+
+            foreach (var RoleInfo in RoleInfos)
+            {
+                var CheckName = "ckb_" + RoleInfo.ID;
+                if (userRoleId.Contains(RoleInfo.ID))
+                {
+                    <div class="col-xs-6 col-sm-2">
+                        <input type="checkbox" checked="checked" name="@CheckName" id="@CheckName" value="@RoleInfo.ID">
+                        <label for="@CheckName">@RoleInfo.RoleName</label>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-6 col-sm-2">
+                        <input type="checkbox" name="@CheckName" id="@CheckName" value="@RoleInfo.ID"  />
+                        <label for="@CheckName">@RoleInfo.RoleName</label>
+                    </div>
+                }
+            }
+        }
+    </div> 
+</body>
+</html>

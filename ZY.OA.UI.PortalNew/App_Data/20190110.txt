@@ -1,0 +1,215 @@
+
+异常时间：2019-01-10 11:02:46,021 [8] 
+异常级别：ERROR 
+异常位置：[8] (D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\LogHelper.cs:27) 
+消息描述：System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 ASP._Page_Views_Home_Index_cshtml.Execute() 位置 D:\ASP.NET项目\项目\ZY.OA\ZY.OA.UI.PortalNew\Views\Home\Index.cshtml:行号 166
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+异常：
+
+ 
+异常时间：2019-01-10 11:02:50,746 [5] 
+异常级别：ERROR 
+异常位置：[5] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:02:50,819 [5] 
+异常级别：ERROR 
+异常位置：[5] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:504) 
+消息描述：Failed to create connection to: 10.0.0.132:11211 -- only 0 created
+异常：
+
+ 
+异常时间：2019-01-10 11:02:50,962 [6] 
+异常级别：ERROR 
+异常位置：[6] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:02:56,152 [7] 
+异常级别：ERROR 
+异常位置：[7] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:03:15,754 [13] 
+异常级别：ERROR 
+异常位置：[13] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:03:23,680 [6] 
+异常级别：ERROR 
+异常位置：[6] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:06:52,416 [10] 
+异常级别：ERROR 
+异常位置：[10] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:06:58,049 [13] 
+异常级别：ERROR 
+异常位置：[13] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:07:08,247 [13] 
+异常级别：ERROR 
+异常位置：[13] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:07:39,434 [23] 
+异常级别：ERROR 
+异常位置：[23] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:09:00,145 [13] 
+异常级别：ERROR 
+异常位置：[13] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:38:35,100 [13] 
+异常级别：ERROR 
+异常位置：[13] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 11:48:09,131 [29] 
+异常级别：ERROR 
+异常位置：[29] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 12:02:38,857 [29] 
+异常级别：ERROR 
+异常位置：[29] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 12:10:57,186 [13] 
+异常级别：ERROR 
+异常位置：[13] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 12:41:00,077 [13] 
+异常级别：ERROR 
+异常位置：[13] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 13:15:07,159 [29] 
+异常级别：ERROR 
+异常位置：[29] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 
+异常时间：2019-01-10 15:22:42,763 [24] 
+异常级别：ERROR 
+异常位置：[24] (C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:606) 
+消息描述：Failed to get SockIO obj for: 10.0.0.132:11211 -- new socket is not connected
+异常：System.IO.IOException: 发生 I/O 错误。
+   在 Memcached.ClientLibrary.SockIO.GetSocket(String host, Int32 port, Int32 timeout) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 148
+   在 Memcached.ClientLibrary.SockIO..ctor(SockIOPool pool, String host, Int32 timeout, Int32 connectTimeout, Boolean noDelay) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIO.cs:行号 105
+   在 Memcached.ClientLibrary.SockIOPool.CreateSocket(String host) 位置 C:\devroot\memcacheddotnet\trunk\clientlib\src\clientlib\SockIOPool.cs:行号 562
+
+
+ 

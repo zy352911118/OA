@@ -1,0 +1,11 @@
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\bin\Debug\ZY.OA.DAL.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\bin\Debug\ZY.OA.DAL.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\bin\Debug\ZY.OA.IDAL.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\bin\Debug\ZY.OA.Model.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\bin\Debug\ZY.OA.IDAL.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\bin\Debug\ZY.OA.Model.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\obj\Debug\ZY.OA.DAL.csprojResolveAssemblyReference.cache
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\obj\Debug\ZY.OA.DAL.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\obj\Debug\ZY.OA.DAL.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\bin\Debug\Newtonsoft.Json.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DAL\bin\Debug\Newtonsoft.Json.xml

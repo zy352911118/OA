@@ -1,0 +1,371 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/EasyUI/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/EasyUI/icon.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/Content/EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/Content/EasyUI/easyui-lang-zh_CN.js"></script>
+    <script src="~/Content/EasyUI/datapattern.js"></script>
+    <title>权限信息</title>
+    <style type="text/css">
+        .search {
+            font-size: 13px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .operation a{
+         text-decoration:none;
+         cursor:pointer;
+        }
+        .operation a:hover{
+         color:red;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            loadData();//初始化表格
+            SearchInfo();//搜索
+            $('#addActionDiv').css('display', 'none');//隐藏添加的Div
+            $('#EditActionDiv').css('display', 'none');//隐藏修改的Div
+            $('#SetActionRoleDiv').css('display', 'none');//隐藏设置权限角色的Div           
+        });
+        //初始化表格
+        function loadData(params) {
+            $('#tt').datagrid({
+                url: '/ActionInfo/GetActionInfo',
+                title: '权限数据表格',
+                width: 1040,
+                height: 400,
+                fitColumns: true, //列自适应
+                striped: true,
+                nowrap: false,
+                idField: 'ID',//主键列的列明
+                loadMsg: '正在加载权限的信息...',
+                pagination: true,//是否有分页
+                singleSelect: false,//是否单行选择
+                pageSize: 10,//页大小，一页多少条数据
+                pageNumber: 1,//当前页，默认的
+                pageList: [10, 15, 20],
+                queryParams: params,//往后台传递参数
+                columns: [[
+                    { field: 'ck', checkbox: true, align: 'center' },
+                    {
+                        field: 'ID', title: '编号', align: 'center',
+                        formatter: function (value, row, index) {                           
+                            return (index + 1);
+                        }
+                    },
+                    { field: 'ActionName', title: '权限名称', align: 'center' },
+                    { field: 'Url', title: '地址', align: 'center'},
+                    { field: 'HttpMethd', title: '请求方式', align: 'center'},
+                    {
+                        field: 'IsMenu', title: '是否是菜单项', align: 'center',
+                        formatter: function (value, row, index) {
+                             return (value==true?"是":"否");
+                         }
+                    },
+                    { field: 'Remark', title: '备注', align: 'center'},
+                    {
+                        field: 'MenuIcon', title: '菜单图标',  align: 'center',
+                         formatter: function (value, row, index) {
+                             if (value== "") {
+                                 return "无图";
+                             } 
+                             return ("<img height='50' width='50' src=" + value + " />");                               
+                         }
+                     },
+                    {
+                        field: 'SubTime', title: '提交时间', align: 'center',
+                        formatter: function (value, row, index) {
+                            valueNew = value.replace('T', ' ').split('.');
+                            return (valueNew[0]);
+                        }
+                    },
+                    {
+                        field: 'ModfiedOn', title: '修改时间', align: 'center',
+                        formatter: function (value, row, index) {
+                            valueNew = value.replace('T', ' ').split('.');
+                            return (valueNew[0]);
+                        }
+                    },
+                    {
+                        field: 'operation', title: '操作', align: 'center',
+                        formatter: function (value, row, index) {
+                            return ("<span class='operation'><a href='javascript:void(0)' class='deleteActionInfo' ids=" + row.ID + ">删除</a>&nbsp;&nbsp;<a href='javascript:void(0)'class='EditActionInfo' ids=" + row.ID + ">修改</a></span>");
+                        }
+                    }
+                ]],
+                toolbar: [{
+                    id: 'Btn-add',
+                    text: '添加',
+                    iconCls: 'icon-add',
+                    handler: function () {
+                        AddInfo();//添加权限信息
+                    }
+                }, {
+                    id: 'Btn-Edit',
+                    text: '修改',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+                        EditInfo();//编辑权限信息
+                    }
+                }, {
+                    id: 'Btn-delete',
+                    text: '删除',
+                    iconCls: 'icon-remove',
+                    handler: function () {
+                        DeleteInfo();//删除权限信息
+                    }
+                }, {
+                    id: 'Btn-SetActionRole',
+                    text: '为权限分配角色',
+                    iconCls: 'icon-tip',
+                    handler: function () {
+                        SetActionRoleInfo();//为权限设置角色
+                    }
+                }],
+                onLoadSuccess: function () {
+                    //修改数据
+                    $('.EditActionInfo').click(function () {
+                        $('#EditActionDiv').css('display', 'block');//显示修改的Div
+                        var id = $(this).attr('ids');
+                        $('#EditActionIframe').attr('src', '/ActionInfo/EditAction?id=' + id);
+                        $('#EditActionDiv').dialog({
+                            modal: true,
+                            minimizable: true,//可最小化
+                            maximizable: true,//可最大化
+                            resizable: true,//可缩放
+                            width: 800,
+                            height: 450,
+                            title: '编辑权限',
+                            buttons: [{
+                                text: '修改',
+                                iconCls: 'icon-ok',
+                                handler: function () {
+                                    $('#EditActionIframe')[0].contentWindow.EditActionSubmit();//调用子窗体的编辑表单提交方法
+                                }
+                            }, {
+                                text: '取消',
+                                handler: function () {
+                                    $('#EditActionDiv').dialog('close');
+                                }
+                            }]
+                        });
+                    });
+                    //删除单条数据
+                    $('.deleteActionInfo').click(function () {
+                          var id = $(this).attr('ids');
+                            $.messager.confirm('提示', '确定要删除吗？', function (b) {
+                                if (b) {                                    
+                                   $.post('/ActionInfo/DeleteActionInfo', { "actionIds": id }, function (data) {
+                                        if (data == 'ok') {
+                                            $('#tt').datagrid('unselectAll');//取消删除之前选中的行
+                                            $('#tt').datagrid('reload');//刷新数据
+                                        } else {
+                                            $.messager.alert('提示', '删除数据出错了！' + data, 'info');
+                                        }
+                                    });
+                                };
+                            });
+                      
+                    });
+                    
+                }                
+            });
+        }
+        //为权限分配角色
+        function SetActionRoleInfo() {
+            var SelectionRows = $('#tt').datagrid('getSelections');//返回所有被选择的行，当没有记录,将返回一个空数组
+            if (SelectionRows.length!=1) {
+                $.messager.alert('提示', '请选择要分配角色的1条权限信息！', 'info');
+                return;
+            }
+            var actionId = SelectionRows[0].ID;
+            $('#SetActionRoleDiv').css('display', 'block');//展示设置权限角色的Div           
+            $('#SetActionRoleIframe').attr('src', '/ActionInfo/SetActionRoleInfo?id=' + actionId);
+            $('#SetActionRoleDiv').dialog({
+                modal: true,
+                minimizable: true,//可最小化
+                maximizable: true,//可最大化
+                resizable: true,//可缩放
+                width: 400,
+                height: 300,
+                title: '设置权限角色',
+                buttons: [{
+                    text: '确定',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        $('#SetActionRoleIframe')[0].contentWindow.SetActionRoleSubmit(); //调用子窗体的设置权限角色表单提交方法
+                    }
+                }, {
+                    text: '取消',
+                    handler: function () {
+                        $('#SetActionRoleDiv').dialog('close');
+                    }
+                }]
+            });
+        }
+        //设置权限角色完成之后
+        function SetActionRoleInfoAfter(data) {
+            if (data == 'ok') {
+                $('#tt').datagrid('reload');
+                $('#SetActionRoleDiv').dialog('close');
+                $.messager.alert('提示', '设置角色权限成功！', 'info');
+            } else {
+                $.messager.alert('提示','设置角色失败！','info');
+            }
+        }
+        //删除权限信息
+        function DeleteInfo() {
+            var SelectionRows = $('#tt').datagrid('getSelections');//返回所有被选择的行，当没有记录,将返回一个空数组
+            if (SelectionRows.length != 0) {
+                $.messager.confirm('提示', '确定要删除吗？', function (b) {
+                    if (b) {
+                        var RowId = '';
+                        for (var Row in SelectionRows) {
+                            RowId = RowId + SelectionRows[Row].ID + ',';//获取所有要删除的ID
+                        }
+                        var newRowId = RowId.substr(RowId, RowId.length - 1);
+                        $.post('/ActionInfo/DeleteActionInfo', { "actionIds": newRowId }, function (data) {
+                            if (data == 'ok') {
+                                $('#tt').datagrid('unselectAll');//取消删除之前选中的行
+                                $('#tt').datagrid('reload');//刷新数据
+                            } else {
+                                $.messager.alert('提示', '删除数据出错了！'+data, 'info');
+                            }
+                        });
+                    };
+                });
+            } else {
+                $.messager.alert('提示','请选择要删除的数据！','info');
+            }
+        }
+        //修改权限信息
+        function EditInfo() {
+            var SelectionRows=$('#tt').datagrid('getSelections');//返回所有被选择的行，当没有记录,将返回一个空数组
+            if (SelectionRows.length!=1) {
+                $.messager.alert('提示', '请选择要修改的1条数据！', 'info');
+                return;
+            }
+            $('#EditActionDiv').css('display', 'block');//显示修改的Div
+            var id = SelectionRows[0].ID;
+            $('#EditActionIframe').attr('src', '/ActionInfo/EditAction?id=' + id);
+            $('#EditActionDiv').dialog({
+                modal: true,
+                minimizable: true,//可最小化
+                maximizable: true,//可最大化
+                resizable: true,//可缩放
+                width: 800,
+                height: 450,
+                title: '编辑权限',
+                buttons: [{
+                    text: '修改',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        $('#EditActionIframe')[0].contentWindow.EditActionSubmit();//调用子窗体的编辑表单提交方法
+                    }
+                }, {
+                    text: '取消',
+                    handler: function () {
+                        $('#EditActionDiv').dialog('close');
+                    }
+                }]
+            });
+
+        }
+        //父窗体的修改权限成功之后
+        function ParentAfterEditAction(data) {
+            if (data == 'ok') {
+                $('#tt').datagrid('reload');
+                $('#EditActionDiv').dialog('close');
+            } else {
+                $.messager.alert('提示','修改权限信息失败！','info');
+            }
+        }
+        //父窗体的添加权限成功之后
+        function ParentAfterAddAction(data) {
+            if (data == 'ok') {
+                $('#tt').datagrid('reload');
+                $('#addActionDiv').dialog('close');
+            } else {
+                $.messager.alert('提示', '不能输入空值！或输入的数据有误', 'info');
+            }
+        }
+        //添加权限信息
+        function AddInfo() {
+            $('#addActionDiv').css('display', 'block');
+            $('#addActionIframe').attr('src', '/ActionInfo/AddActionInfo');
+            $('#addActionDiv').dialog({
+                modal: true,
+                minimizable: true,//可最小化
+                maximizable: true,//可最大化
+                resizable: true,//可缩放
+                width: 800,
+                height: 450,
+                title: '添加权限',
+                buttons: [{
+                    text: '添加',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        $('#addActionIframe')[0].contentWindow.AddActionSubmit();//调用子窗体的表单提交方法
+                    }
+                }, {
+                    text: '取消',
+                    handler: function () {
+                        $('#addActionDiv').dialog('close');
+                    }
+                }]
+            });
+        }
+        //搜索
+        function SearchInfo() {
+            $('#secrchBtn').click(function () {
+                var Remark = $('#Remark').val();
+                var HttpMethd = $('#HttpMethd').val();
+                var ActionName = $('#ActionName').val();
+                var parms = { 'Remark': Remark, 'HttpMethd': HttpMethd, 'ActionName': ActionName };
+                loadData(parms);
+            });
+        };
+    </script>
+</head>
+<body>
+    <!----------------------------搜索   开始------------------------------------>
+    <div class="search">
+        备注:<input type="text" id="Remark" />
+        请求方式:<input type="text" style="width:15%" id="HttpMethd" />
+        权限名称:<input type="text" id="ActionName" />
+        <input type="button" id="secrchBtn" value="搜索" />
+    </div>
+    <!----------------------------搜索   结束------------------------------------>
+    <!----------------------------权限信息展示   开始------------------------------------>
+    <div style="overflow:hidden;">
+        <table id="tt"></table>
+    </div>
+    <!----------------------------权限信息展示   结束------------------------------------>
+    <!----------------------------添加权限信息   开始------------------------------------>
+    <div id="addActionDiv" style="overflow:hidden">
+        <iframe id="addActionIframe" width="100%" height="100%"></iframe>
+    </div>
+    <!----------------------------添加权限信息   结束------------------------------------>
+
+    <!----------------------------修改权限信息   开始------------------------------------>
+    <div id="EditActionDiv" style="overflow:hidden">
+        <iframe id="EditActionIframe" width="100%" height="100%"></iframe>
+    </div>
+    <!----------------------------修改权限信息   结束------------------------------------>
+
+    <!----------------------------为权限分配角色信息   开始------------------------------------>
+    <div id="SetActionRoleDiv" style="overflow:hidden">
+        <iframe id="SetActionRoleIframe" width="100%" scrolling="no" height="100%"></iframe>
+    </div>
+    <!----------------------------为权限分配角色信息   结束------------------------------------>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+@using ZY.OA.Model
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <title>为权限分配角色</title>
+    <style type="text/css">
+        label, input {
+            font-weight: 500;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        //提交
+        function SetActionRoleSubmit() {
+            $('#SetActionRoleFrom').submit();
+        }
+        //提交完成之后
+        function AfterSet(data) {
+            window.parent.window.SetActionRoleInfoAfter(data);//调用父窗体的设置权限角色完成之后方法
+        }
+    </script>
+</head>
+<body>
+    @{
+        ActionInfo actionInfo = ViewBag.actionInfo;
+    }
+    <label style="font-size:18px;font-weight:bold"> 为:<span style="color:red"> @actionInfo.ActionName</span> 分配角色</label>
+    @using (Ajax.BeginForm("SetActionRole", "ActionInfo", new AjaxOptions() { HttpMethod = "post", OnSuccess = "AfterSet" }, new { id = "SetActionRoleFrom" }))
+    {
+        <input type="hidden" name="actionInfoId" value="@actionInfo.ID" />
+        List<RoleInfo> RoleInfoList = ViewBag.RoleInfoList;
+        List<int> actionRoleId = ViewBag.actionRoleId;
+        <div class="row">
+            @foreach (RoleInfo roleInfo in RoleInfoList)
+            {
+                var roleInfoId = "CKB_" + roleInfo.ID;
+                if (actionRoleId.Contains(roleInfo.ID))
+                {
+
+                    <div class="col-xs-6 col-sm-2">
+                    <input type="checkbox" id="@roleInfoId" name="@roleInfoId" value="@roleInfo.ID" checked="checked">
+                        <label for="@roleInfoId">
+                            @roleInfo.RoleName
+                        </label>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-6 col-sm-2">
+                   <input type="checkbox" id="@roleInfoId" name="@roleInfoId" value="@roleInfo.ID">
+                        <label for="@roleInfoId">
+                            @roleInfo.RoleName
+                        </label>
+                    </div>
+                }
+            }
+        </div>
+    }
+</body>
+</html>
+

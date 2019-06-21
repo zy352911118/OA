@@ -1,0 +1,173 @@
+﻿
+@{
+    Layout = null;
+}
+@using ZY.OA.Model
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/MyAjaxForm.js"></script>
+    <title>编辑权限信息</title>
+    <script type="text/javascript">
+        $(function () {
+            IsMenuchange();//隐藏或显示上传的Div
+            UpLoadFileValidate(); //上传文件的验证，只能上传图片
+            UpLoadFile();//上传图片
+        });
+        //隐藏或显示上传的Div
+        function IsMenuchange() {
+            $('#isOrNo').change(function () {
+                $('#upLoadImg').toggle();
+            });
+        }
+        //上传文件的验证，只能上传图片
+        function UpLoadFileValidate() {
+            var fileExtArray = ['.BMP', '.JPG', '.JPEG', '.PNG', '.GIF'];
+            $('#MenuIcon').change(function () {
+                var b = false;
+                var file = $(this).val();
+                var fileExt = file.substr(file.lastIndexOf('.'));
+                var fileExt = fileExt.toUpperCase();
+                for (var i in fileExtArray) {
+                    if (fileExt == fileExtArray[i]) {
+                        b = true;
+                    }
+                }
+                //如果为图片
+                if (b) {
+                    $('#MenuIcon').popover('destroy');//隐藏并销毁元素的弹出框
+                } else {
+                    $('#MenuIcon').popover('show');//显示元素的弹出框
+                    $('#MenuIcon').val('');//如果文件格式错误，清空file的值
+                }
+            });
+        }
+        //上传图片
+        function UpLoadFile() {
+            $('#upLoadBtn').click(function () {
+                $("#actionEditFrom").ajaxSubmit({
+                    success: function (data) {
+                        var newData = data.split(':');
+                        if (newData[0] == 'ok') {
+                            $('#upLoadImgShow').attr('src', newData[1]);//上传成功后显示图片
+                            $('#ImgSrcHidden').val(newData[1]);//上传成功后的路径存入隐藏域
+                            $('#MenuIcon').val('');//清空file的值
+                        } else {
+                            $('#MenuIcon').popover('show');//显示元素的弹出框
+                        }
+                    },
+                    url: '/ActionInfo/UpLoadFile',
+                    type: "post"
+                });
+            });
+        };
+        //编辑成功之后
+        function AfterEdit(data) {
+            window.parent.window.ParentAfterEditAction(data);//调用父窗体的修改权限成功之后方法
+        }
+        //编辑表单提交
+        function EditActionSubmit() {
+            $('#actionEditFrom').submit();//提交
+        }
+    </script>
+</head>      
+@{
+    ActionInfo actionInfo = ViewBag.actionInfo;
+}
+<body>
+    @using (Ajax.BeginForm("EditAction", "ActionInfo",new AjaxOptions() {HttpMethod="post",OnSuccess="AfterEdit" },new {id="actionEditFrom" })) {
+    <input type="hidden" name="ID" value="@actionInfo.ID" />
+    <input type="hidden" name="SubTime" value="@actionInfo.SubTime" />
+    <input type="hidden" name="DelFlag" value="@actionInfo.DelFlag" />
+    <input type="hidden" id="ImgSrcHidden" value="@actionInfo.MenuIcon" name="ImgSrc" />
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="ActionName">权限名称:</label>
+        <div class="col-sm-10">
+            <input class="form-control input-sm" type="text" id="ActionName" value="@actionInfo.ActionName" name="ActionName" placeholder="权限名称">
+        </div>
+    </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="Url">Url:</label>
+        <div class="col-sm-10">
+            <input class="form-control input-sm" type="text" id="Url" value="@actionInfo.Url" name="Url" placeholder="Url">
+        </div>
+    </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label">请求方式:</label>
+        <div class="col-sm-10">
+            <select class="form-control input-sm" name="HttpMethd" id="HttpMethd">
+                
+                    @if (actionInfo.HttpMethd == "GET")
+                    {
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                    }
+                    else
+                    {
+                        <option value="POST">POST</option>
+                        <option value="GET">GET</option>
+                    }
+                                              
+            </select>
+        </div>
+    </div>
+    if (actionInfo.IsMenu == true)
+    {
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label">菜单权限(Y/N):</label>
+        <div class="col-sm-10">               
+           <input class="input-sm" type="checkbox" checked="checked" value="true" name="isOrNo"id="isOrNo">                               
+        </div>
+    </div>
+    <div class="form-group form-group-sm" id="upLoadImg" style="display:block">
+        <label class="col-sm-2 control-label">菜单图标:</label>
+        <div class="col-sm-10">
+            <input class="input-sm" type="file" name="MenuIcon" id="MenuIcon" title="提示" data-content="文件格式错误！请选择图片">
+            <button type="button" class="btn btn-info" id="upLoadBtn">上传图片</button>
+            <div>
+                <img id="upLoadImgShow" src="@actionInfo.MenuIcon" />
+            </div>
+        </div>
+    </div>
+    }
+    else
+    {
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">菜单权限(Y/N):</label>
+            <div class="col-sm-10">
+                <input class="input-sm" type="checkbox" value="true" name="isOrNo" id="isOrNo">
+            </div>
+        </div>
+        <div class="form-group form-group-sm" id="upLoadImg" style="display:none">
+            <label class="col-sm-2 control-label">菜单图标:</label>
+            <div class="col-sm-10">
+                <input class="input-sm" type="file" name="MenuIcon" id="MenuIcon" title="提示" data-content="文件格式错误！请选择图片">
+                <button type="button" class="btn btn-info" id="upLoadBtn">上传图片</button>
+                <div>
+                    <img id="upLoadImgShow" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="Remark">备注:</label>
+        <div class="col-sm-10">
+            <input class="form-control input-sm" type="text" value="@actionInfo.Remark" id="Remark" name="Remark" placeholder="备注">
+        </div>
+    </div>
+    <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="Sort">排序:</label>
+        <div class="col-sm-10">
+            <input class="form-control input-sm" type="text" id="Sort" value="@actionInfo.Sort" name="Sort" placeholder="排序">
+        </div>
+    </div>
+    }
+</body>
+</html>

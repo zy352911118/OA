@@ -1,0 +1,258 @@
+﻿
+@{
+    Layout = null;
+}
+@using ZY.OA.Model;
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Content/ligerui/lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ligerui/lib/ligerUI/skins/ligerui-icons.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/Content/ligerui/lib/ligerUI/js/ligerui.min.js"></script>
+    <script type="text/javascript">
+                $(function ()
+                {
+                    $("#layout1").ligerLayout();                  
+                });
+                
+    </script>
+    <style type="text/css">
+        body {
+            padding: 5px;
+            margin: 0;
+            padding-bottom: 15px;
+        }
+
+        #layout1 {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .l-page-top {
+            height: 110px;
+            background: #f8f8f8;
+        }
+        .txt {
+             float:left;          
+             font-size:20px;
+             font-style:oblique;
+             color:cadetblue;
+             font-weight:bold;
+             margin-left:30px;
+             margin-top:70px;
+        }
+        .welecom {
+          float:right;
+          font-size:14px;
+          color:palegoldenrod;
+          font-weight:bold;
+          margin-top:70px;
+          margin-right:100px;     
+        }
+            .welecom a:hover {           
+            color:red;            
+            }
+            .welecom a {
+            color:burlywood;
+            text-decoration:none;
+            cursor:pointer;
+            }
+        div {
+        border:none;
+        }
+    </style>
+
+    <style type="text/css">
+        .l-case-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #winlinks {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 100%;
+        }
+
+            #winlinks ul {
+                position: relative;
+            }
+
+            #winlinks li {
+                width: 70px;
+                cursor: pointer;
+                height: 80px;
+                position: absolute;
+                z-index: 101;
+                list-style: none;
+                text-align: center;
+            }
+
+                #winlinks li img {
+                    width: 36px;
+                    height: 36px;
+                }
+
+                #winlinks li span {
+                    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+                    border-radius: 10px 10px 10px 10px;
+                    display: block;
+                    font-size: 12px;
+                    margin-top: 1px;
+                    color: White;
+                    line-height: 18px;
+                    text-align: center;
+                }
+
+                #winlinks li.l-over div.bg {
+                    display: block;
+                }
+
+                #winlinks li div.bg {
+                    display: none;
+                    position: absolute;
+                    top: -2px;
+                    left: -2px;
+                    z-index: 0;
+                    width: 75px;
+                    height: 64px;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
+                    background: #000;
+                    opacity: 0.1;
+                    filter: alpha(opacity=10);
+                }
+
+        .l-taskbar-task-icon {
+            top: 3px;
+            left: 6px;
+            background-image: none;
+        }
+
+        .l-taskbar-task-content {
+            margin-left: 30px;
+        }
+
+        .l-taskbar-task-icon img {
+            width: 22px;
+            height: 22px;
+        }
+    </style>
+</head>
+<body style="padding-top:0px;padding-left:0px">
+    <!--------------------------------网页头部 开始------------------------------------------>
+    <div class="l-page-top" style="overflow: hidden;background-color:#054c60">
+        <img src="~/Content/ligerui/lib/images/nav6.png" style="float:left;margin-left:20px;margin-top:20px;" />
+        <span class="txt">昱大大のOA管理系统</span>
+        <span class="welecom">欢迎：@{
+           UserInfo userInfo= ViewBag.userInfo;
+            @userInfo.UName
+        } &nbsp;&nbsp;<a href="/UserLogin/LoginOut">退出</a></span>
+    </div>
+    <!--------------------------------网页头部 结束------------------------------------------>
+
+    <!--------------------------------网页主内容 开始------------------------------------------>
+    <div id="layout1" >
+        <div position="center" style="overflow: hidden; background: url(/Content/ligerui/lib/images/1-140GF94204.jpg) no-repeat  center center;">
+            <div id="winlinks" >
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------网页主内容 结束------------------------------------------>
+   
+</body>
+</html>
+<script type="text/javascript">
+    var LINKWIDTH = 90, LINKHEIGHT = 90, TASKBARHEIGHT = 43;
+    var winlinksul =  $("#winlinks ul");
+    function f_open(url, title, icon) {
+        var win = $.ligerDialog.open(
+        { height: 530, url: url, width: 1100, showMax: true, showToggle: true, showMin: true, isResize: true, modal: false, title: title, slide: false, buttons: [
+            { text: '确定', onclick: function (item, Dialog, index) {
+                win.hide();
+            }
+            }
+        ]
+        });
+        var task = jQuery.ligerui.win.tasks[win.id];
+        if (task) {
+            $(".l-taskbar-task-icon:first", task).html('<img src="' + icon + '" />');
+        }
+        return win;
+    }
+    var links = [
+            //{ icon: '/Content/ligerui/lib/images/nav3.png', title: '用户管理', url: '../UserInfo/Index' },
+            //{ icon: '/Content/ligerui/lib/images/nav7.png', title: '角色管理', url: '../RoleInfo/Index' },
+            //{ icon: '/Content/ligerui/lib/images/nav0.png', title: '权限管理', url: '../ActionInfo/Index' }
+        ];
+
+    function onResize() {
+        var linksHeight = $(window).height() - TASKBARHEIGHT-70;
+        var winlinks = $("#winlinks");
+        winlinks.height(linksHeight);
+        var colMaxNumber = parseInt(linksHeight / LINKHEIGHT);//一列最多显示几个快捷方式
+        for (var i = 0, l = links.length; i < l; i++) {
+            var link = links[i];
+            var jlink = $("li[linkindex=" + i + "]", winlinks);
+            var top = (i % colMaxNumber) * LINKHEIGHT, left = parseInt(i / colMaxNumber) * LINKWIDTH;
+            if (isNaN(top) || isNaN(left)) continue;
+            jlink.css({ top: top, left: left });
+        }
+
+    }
+    function linksInit() {
+        for (var i = 0, l = links.length; i < l; i++) {
+            var link = links[i];
+            var jlink;
+            var jlink = $("<li></li>");
+            jlink.attr("linkindex", i);
+            jlink.append("<img src='" + link.icon + "' />");
+            jlink.append("<span>" + link.title + "</span>");
+            jlink.append("<div class='bg'></div>");
+            jlink.hover(function () {
+                $(this).addClass("l-over");
+            }, function () {
+                $(this).removeClass("l-over");
+            }).click(function () {
+                var linkindex = $(this).attr("linkindex");
+                var link = links[linkindex];
+                f_open(link.url, link.title, link.icon);
+            });
+            jlink.appendTo(winlinksul);
+        }
+
+    }
+
+    $(window).resize(onResize);
+    $.ligerui.win.removeTaskbar = function () { }; //不允许移除
+    $.ligerui.win.createTaskbar(); //页面加载时创建任务栏
+    //菜单权限过滤
+    $.post('/Home/ActionIconfiltration', {}, function (data) {
+        links = data; //菜单地址和图标      
+        linksInit();
+        onResize();
+    });
+    
+    
+
+</script>
+
+

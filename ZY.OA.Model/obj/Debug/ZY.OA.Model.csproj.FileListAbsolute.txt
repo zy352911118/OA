@@ -1,0 +1,14 @@
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\ZY.OA.Model.dll.config
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\ZY.OA.Model.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\ZY.OA.Model.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\EntityFramework.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\EntityFramework.xml
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\obj\Debug\ZY.OA.Model.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\obj\Debug\ZY.OA.Model.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\Newtonsoft.Json.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\bin\Debug\Newtonsoft.Json.xml
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Model\obj\Debug\ZY.OA.Model.csprojResolveAssemblyReference.cache

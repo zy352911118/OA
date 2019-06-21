@@ -1,0 +1,145 @@
+﻿
+@{
+    Layout = null;
+}
+@using ZY.OA.Model
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>   
+    <script src="~/Content/hullabaloo.js"></script>
+    <title>设置用户特殊权限</title>
+    <script type="text/javascript">
+        $.hulla = new hullabaloo();
+        $(function () {
+            selectHasPermission();//为用户分配允许或禁止的权限
+            ClearUserAction();//清除用户的权限
+        });
+        //为用户分配允许或禁止的权限
+        function selectHasPermission() {
+            $('.selectReadio').click(function () {
+                var actionId = $(this).attr('actionId');
+                var userId = $(this).attr('userId');
+                var HasPermission = $(this).val();
+                $.post('/UserInfo/SetUserActionInfoOver', { 'actionId': actionId, 'userId': userId, 'HasPermission': HasPermission }, function (data) {
+                    if (data == 'ok') {
+                        $.hulla.send('分配成功！', 'danger');
+                    } else {
+                        $.hulla.send('分配失败！', 'danger');
+                    }
+                });
+            });
+        }
+
+        //清除用户的权限
+        function ClearUserAction() {
+            $('.BtnClear').click(function () {
+                var i = 0;
+                 $(this).parent().find(".selectReadio").each(function () {
+                     if ($(this).is(":checked")) {
+                         i += 1;
+                         return false;
+                     }
+                 }, i);
+                 if (i<=0) {
+                     $.hulla.send('不要瞎搞！', 'danger');
+                     return;
+                 }
+                $(this).attr('class', 'BtnClear btn-primary btn-xs').parent().find('.selectReadio').removeAttr('checked');//清除选中项
+                var userId = $(this).attr('userId');
+                var actionId = $(this).attr('actionId');
+                $.post('/UserInfo/ClearUserAction', { "userId": userId, "actionId": actionId }, function (data) {
+                    if (data == 'ok') {
+                        $.hulla.send('清除成功！', 'danger');
+                    } else {
+                        $.hulla.send('清除失败！', 'danger');
+                    }
+                });
+            });
+                
+                
+        };
+    </script>
+</head>
+<body>
+    @{
+        UserInfo userInfo = ViewBag.userInfo;
+    }
+    <label style="font-size:18px; font-weight:bolder">为：<span style="color:red">@userInfo.UName</span>&nbsp;设置特殊权限</label>
+    @{
+        List<ActionInfo> actionInfolist = ViewBag.actionInfolist;
+        List<R_UserInfo_ActionInfo> r_UserInfo_ActionInfo = ViewBag.r_UserInfo_ActionInfo;
+        <table class="table table-hover">
+            <tr>
+                <td>ID</td>
+                <td>权限名称</td>
+                <td>权限地址</td>
+                <td>请求方式</td>
+                <td>备注</td>
+                <td>操作</td>
+            </tr>
+            @foreach (var actionInfo in actionInfolist)
+            {
+                var actionId = "rdo_" + actionInfo.ID;
+                var nActionId = "nrdo_" + actionInfo.ID;
+                <tr>
+                    <td>@actionInfo.ID</td>
+                    <td>@actionInfo.ActionName</td>
+                    <td>@actionInfo.Url</td>
+                    <td>@actionInfo.HttpMethd</td>
+                    <td>@actionInfo.Remark</td>
+                    @{
+                        var r_UserInfo_Act = (from r in r_UserInfo_ActionInfo
+                                              where r.ActionInfoID == actionInfo.ID
+                                              select r).FirstOrDefault();
+
+                        if (r_UserInfo_Act != null)
+                        {
+                            if (r_UserInfo_Act.HasPermission == true)
+                            {
+                                <td>
+                                    <label class="radio-inline">
+                                        <input type="radio" checked="checked" userId="@userInfo.ID" name="@actionId" class="selectReadio"  actionId="@actionInfo.ID" value="true"> 允许
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" userId="@userInfo.ID" name="@actionId" class="selectReadio" actionId="@actionInfo.ID" value="flase"> 禁止
+                                    </label>
+                                    &nbsp;&nbsp;<button type="button" userId="@userInfo.ID" actionId="@actionInfo.ID" class="BtnClear btn-danger btn-xs">清除</button>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <label class="radio-inline">
+                                        <input type="radio" userId="@userInfo.ID" name="@actionId" class="selectReadio"    actionId="@actionInfo.ID" value="true"> 允许
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" userId="@userInfo.ID" checked="checked" class="selectReadio" name="@actionId" actionId="@actionInfo.ID" value="flase"> 禁止
+                                    </label>
+                                    &nbsp;&nbsp;<button type="button" userId="@userInfo.ID" actionId="@actionInfo.ID" class="BtnClear btn-danger btn-xs">清除</button>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td>
+                                <label class="radio-inline">
+                                    <input type="radio" name="@actionId" userId="@userInfo.ID" class="selectReadio"  actionId="@actionInfo.ID"  value="true"> 允许
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="@actionId" userId="@userInfo.ID" class="selectReadio"  actionId="@actionInfo.ID" value="flase"> 禁止
+                                </label> 
+                                &nbsp;&nbsp;<button type="button" userId="@userInfo.ID" actionId="@actionInfo.ID" class="BtnClear btn-primary btn-xs">清除</button>
+                            </td>
+                        }
+                    }
+                </tr>
+         }           
+        </table>
+    }
+</body>
+</html>

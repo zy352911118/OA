@@ -1,0 +1,16 @@
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\ZY.OA.DALFactory.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\ZY.OA.DALFactory.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\EntityFramework.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\ZY.OA.DAL.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\ZY.OA.IDAL.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\ZY.OA.Model.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\ZY.OA.DAL.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\ZY.OA.IDAL.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\EntityFramework.xml
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\ZY.OA.Model.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\obj\Debug\ZY.OA.DALFactory.csprojResolveAssemblyReference.cache
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\obj\Debug\ZY.OA.DALFactory.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\obj\Debug\ZY.OA.DALFactory.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\Newtonsoft.Json.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.DALFactory\bin\Debug\Newtonsoft.Json.xml

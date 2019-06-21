@@ -1,0 +1,12 @@
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\bin\Debug\ZY.OA.IDAL.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\bin\Debug\ZY.OA.IDAL.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\bin\Debug\ZY.OA.Model.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\bin\Debug\EntityFramework.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\bin\Debug\ZY.OA.Model.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\bin\Debug\EntityFramework.xml
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\obj\Debug\ZY.OA.IDAL.csprojResolveAssemblyReference.cache
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\obj\Debug\ZY.OA.IDAL.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\obj\Debug\ZY.OA.IDAL.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\bin\Debug\Newtonsoft.Json.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.IDAL\bin\Debug\Newtonsoft.Json.xml

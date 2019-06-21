@@ -1,0 +1,12 @@
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\bin\Debug\ZY.OA.Common.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\bin\Debug\ZY.OA.Common.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\obj\Debug\ZY.OA.Common.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\obj\Debug\ZY.OA.Common.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\bin\Debug\log4net.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\bin\Debug\Commons.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\bin\Debug\Memcached.ClientLibrary.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\bin\Debug\Memcached.ClientLibrary.pdb
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\bin\Debug\Newtonsoft.Json.dll
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\bin\Debug\Newtonsoft.Json.xml
+D:\ASP.NET项目\项目\ZY.OA\ZY.OA.Common\obj\Debug\ZY.OA.Common.csprojResolveAssemblyReference.cache

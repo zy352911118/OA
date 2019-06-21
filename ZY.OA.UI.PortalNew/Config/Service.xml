@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  <object name="ActionInfoService" type="ZY.OA.BLL.ActionInfoService, ZY.OA.BLL" singleton="false" >
+  </object>
+
+  <object name="RoleInfoService" type="ZY.OA.BLL.RoleInfoService, ZY.OA.BLL" singleton="false" >
+  </object>
+  
+  <object name="UserInfoService" type="ZY.OA.BLL.UserInfoService, ZY.OA.BLL" singleton="false" >
+  </object>
+
+</objects>
